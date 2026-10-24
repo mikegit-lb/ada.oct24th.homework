@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prepositions of Place — Görselli Boşluk Doldurma Alıştırması (21 Soru)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+    .header-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      margin-bottom: 20px;
+    }
+    .header-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.45rem;
+      color: #1e293b;
+    }
+    .subtitle {
+      margin: 4px 0 0;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    button {
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #1e293b;
+      transition: all 0.15s ease;
+    }
+    button:hover {
+      border-color: #3b82f6;
+      background: #eff6ff;
+    }
+    button.primary {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+    button.primary:hover {
+      background: #1d4ed8;
+    }
+    .score-pill {
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+    .word-bank {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .word-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      font-size: 0.85rem;
+    }
+    .word-chip strong {
+      color: #1d4ed8;
+    }
+    .word-chip .count {
+      background: #ffffff;
+      padding: 1px 7px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    .q-card {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+      break-inside: avoid;
+    }
+    .q-card.correct {
+      border-color: #22c55e;
+      background: #f0fdf4;
+    }
+    .q-card.wrong {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+    .q-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .q-num {
+      background: #e0e7ff;
+      color: #1e40af;
+      padding: 2px 9px;
+      border-radius: 6px;
+    }
+    .svg-box {
+      width: 100%;
+      height: 155px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .sentence {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: #0f172a;
+      text-align: center;
+      margin: 2px 0;
+    }
+    .blank-input {
+      width: 125px;
+      border: none;
+      border-bottom: 2px solid #2563eb;
+      background: transparent;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      padding: 2px 4px;
+      outline: none;
+    }
+    .tr-hint {
+      font-size: 0.8rem;
+      color: #64748b;
+      text-align: center;
+      font-style: italic;
+    }
+    .quick-picks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
+      padding-top: 6px;
+      border-top: 1px dashed #e2e8f0;
+    }
+    .pick-btn {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      font-weight: 600;
+    }
+    .pick-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+
+    @media print {
+      body { background: #ffffff; }
+      .no-print, .quick-picks { display: none !important; }
+      .container { padding: 0; max-width: 100%; }
+      .header-card { box-shadow: none; border: 1px solid #94a3b8; margin-bottom: 12px; padding: 12px; }
+      .grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .q-card { padding: 8px; border: 1px solid #94a3b8; box-shadow: none; }
+      .svg-box { height: 115px; background: #ffffff; }
+      .sentence { font-size: 0.88rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-card">
+      <div class="header-top">
+        <div>
+          <h1>📍 Prepositions of Place — Görselli Boşluk Doldurma Alıştırması</h1>
+          <p class="subtitle">Her bir yer edatı <strong>3'er kez</strong> sorulmuştur (Toplam 21 Soru). Görsele bakarak boşlukları doldurun.</p>
+        </div>
+        <div class="toolbar no-print">
+          <button class="primary" onclick="checkAll()">✓ Tümünü Kontrol Et</button>
+          <button onclick="toggleOrder()" id="btnOrder">🔀 Sıra: Karışık</button>
+          <button onclick="toggleHints()" id="btnHints">🇹🇷 Türkçe İpucu: Açık</button>
+          <button onclick="showAnswers()">🔑 Cevapları Göster</button>
+          <button onclick="resetAll()">↺ Sıfırla</button>
+          <button onclick="window.print()">🖨️ Yazdır (A4)</button>
+          <span class="score-pill" id="scorePill">Skor: 0 / 21</span>
+        </div>
+      </div>
+
+      <div class="word-bank" id="wordBank"></div>
+    </div>
+
+    <div class="grid" id="questionsGrid"></div>
+  </div>
+
+  <script>
+    const PREPOSITIONS = [
+      { key: "behind", label: "behind", tr: "arkasında" },
+      { key: "in front of", label: "in front of", tr: "önünde" },
+      { key: "between", label: "between", tr: "arasında" },
+      { key: "next to", label: "next to", tr: "bitişiğinde / yanında" },
+      { key: "under", label: "under", tr: "altında" },
+      { key: "on", label: "on", tr: "üstünde" },
+      { key: "in", label: "in", tr: "içinde" }
+    ];
+
+    const QUESTIONS_MASTER = [
+      // behind (3)
+      { id: "B1", prep: "behind", before: "The orange cat is", after: "the box.", trSentence: "Turuncu kedi kutunun arkasındadır.", scene: "cat_behind_box" },
+      { id: "B2", prep: "behind", before: "The brown dog is", after: "the tree.", trSentence: "Kahverengi köpek ağacın arkasındadır.", scene: "dog_behind_tree" },
+      { id: "B3", prep: "behind", before: "The white rabbit is", after: "the green bush.", trSentence: "Beyaz tavşan yeşil çalının arkasındadır.", scene: "rabbit_behind_bush" },
+      // in front of (3)
+      { id: "F1", prep: "in front of", before: "The brown dog is", after: "the doghouse.", trSentence: "Kahverengi köpek kulübenin önündedir.", scene: "dog_infront_house" },
+      { id: "F2", prep: "in front of", before: "The red ball is", after: "the box.", trSentence: "Kırmızı top kutunun önündedir.", scene: "ball_infront_box" },
+      { id: "F3", prep: "in front of", before: "The orange cat is", after: "the sofa.", trSentence: "Turuncu kedi koltuğun önündedir.", scene: "cat_infront_sofa" },
+      // between (3)
+      { id: "W1", prep: "between", before: "The red ball is", after: "the two boxes.", trSentence: "Kırmızı top iki kutunun arasındadır.", scene: "ball_between_boxes" },
+      { id: "W2", prep: "between", before: "The apple is", after: "the book and the cup.", trSentence: "Elma, kitap ile bardağın arasındadır.", scene: "apple_between_book_cup" },
+      { id: "W3", prep: "between", before: "The brown dog is", after: "the two trees.", trSentence: "Kahverengi köpek iki ağacın arasındadır.", scene: "dog_between_trees" },
+      // next to (3)
+      { id: "N1", prep: "next to", before: "The red ball is", after: "the box.", trSentence: "Kırmızı top kutunun yanındadır (bitişiğindedir).", scene: "ball_nextto_box" },
+      { id: "N2", prep: "next to", before: "The chair is", after: "the table.", trSentence: "Sandalye masanın yanındadır (bitişiğindedir).", scene: "chair_nextto_table" },
+      { id: "N3", prep: "next to", before: "The orange cat is", after: "the brown dog.", trSentence: "Turuncu kedi kahverengi köpeğin yanındadır.", scene: "cat_nextto_dog" },
+      // under (3)
+      { id: "U1", prep: "under", before: "The orange cat is", after: "the table.", trSentence: "Turuncu kedi masanın altındadır.", scene: "cat_under_table" },
+      { id: "U2", prep: "under", before: "The red ball is", after: "the chair.", trSentence: "Kırmızı top sandalyenin altındadır.", scene: "ball_under_chair" },
+      { id: "U3", prep: "under", before: "The white rabbit is", after: "the tree.", trSentence: "Beyaz tavşan ağacın altındadır.", scene: "rabbit_under_tree" },
+      // on (3)
+      { id: "O1", prep: "on", before: "The red apple is", after: "the book.", trSentence: "Kırmızı elma kitabın üstündedir.", scene: "apple_on_book" },
+      { id: "O2", prep: "on", before: "The orange cat is", after: "the box.", trSentence: "Turuncu kedi kutunun üstündedir.", scene: "cat_on_box" },
+      { id: "O3", prep: "on", before: "The blue book is", after: "the table.", trSentence: "Mavi kitap masanın üstündedir.", scene: "book_on_table" },
+      // in (3)
+      { id: "I1", prep: "in", before: "The orange cat is", after: "the box.", trSentence: "Turuncu kedi kutunun içindedir.", scene: "cat_in_box" },
+      { id: "I2", prep: "in", before: "The goldfish is", after: "the bowl.", trSentence: "Japon balığı fanusun içindedir.", scene: "fish_in_bowl" },
+      { id: "I3", prep: "in", before: "The red apple is", after: "the basket.", trSentence: "Kırmızı elma sepetin içindedir.", scene: "apple_in_basket" }
+    ];
+
+    const MIXED_IDS = [
+      "O2", "U1", "I1", "B1", "F1", "W1", "N1",
+      "O1", "I2", "B2", "U2", "F2", "W2", "N2",
+      "I3", "B3", "O3", "F3", "U3", "W3", "N3"
+    ];
+
+    let isMixed = true;
+    let showHints = true;
+    const answers = {};
+    const statuses = {};
+
+    function getList() {
+      return isMixed ? MIXED_IDS.map(id => QUESTIONS_MASTER.find(q => q.id === id)) : [...QUESTIONS_MASTER];
+    }
+
+    function drawCat(x, y, scale = 1) {
+      return `<g transform="translate(${x},${y}) scale(${scale})">
+        <path d="M 18 12 Q 34 2 30 -10" fill="none" stroke="#f97316" stroke-width="6" stroke-linecap="round"/>
+        <ellipse cx="0" cy="12" rx="20" ry="16" fill="#fb923c" stroke="#c2410c" stroke-width="2"/>
+        <ellipse cx="-10" cy="26" rx="6" ry="4" fill="#ffedd5" stroke="#c2410c" stroke-width="1.5"/>
+        <ellipse cx="10" cy="26" rx="6" ry="4" fill="#ffedd5" stroke="#c2410c" stroke-width="1.5"/>
+        <circle cx="0" cy="-8" r="16" fill="#fb923c" stroke="#c2410c" stroke-width="2"/>
+        <polygon points="-14,-16 -16,-32 -4,-22" fill="#fb923c" stroke="#c2410c" stroke-width="2" stroke-linejoin="round"/>
+        <polygon points="14,-16 16,-32 4,-22" fill="#fb923c" stroke="#c2410c" stroke-width="2" stroke-linejoin="round"/>
+        <polygon points="-12,-18 -14,-28 -6,-21" fill="#fda4af"/>
+        <polygon points="12,-18 14,-28 6,-21" fill="#fda4af"/>
+        <circle cx="-6" cy="-10" r="2.6" fill="#1e293b"/>
+        <circle cx="6" cy="-10" r="2.6" fill="#1e293b"/>
+        <polygon points="-3,-5 3,-5 0,-2" fill="#f43f5e"/>
+        <path d="M 0,-2 Q -4,2 -7,0 M 0,-2 Q 4,2 7,0" fill="none" stroke="#7c2d12" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="-18" y1="-6" x2="-9" y2="-5" stroke="#7c2d12" stroke-width="1.2"/>
+        <line x1="-18" y1="-2" x2="-9" y2="-2" stroke="#7c2d12" stroke-width="1.2"/>
+        <line x1="18" y1="-6" x2="9" y2="-5" stroke="#7c2d12" stroke-width="1.2"/>
+        <line x1="18" y1="-2" x2="9" y2="-2" stroke="#7c2d12" stroke-width="1.2"/>
+      </g>`;
+    }
+
+    function drawDog(x, y, scale = 1) {
+      return `<g transform="translate(${x},${y}) scale(${scale})">
+        <path d="M 16 8 Q 30 -2 26 -12" fill="none" stroke="#92400e" stroke-width="6" stroke-linecap="round"/>
+        <ellipse cx="0" cy="12" rx="21" ry="16" fill="#b45309" stroke="#78350f" stroke-width="2"/>
+        <ellipse cx="0" cy="14" rx="11" ry="11" fill="#fde68a"/>
+        <ellipse cx="-10" cy="26" rx="6" ry="4" fill="#fde68a" stroke="#78350f" stroke-width="1.5"/>
+        <ellipse cx="10" cy="26" rx="6" ry="4" fill="#fde68a" stroke="#78350f" stroke-width="1.5"/>
+        <circle cx="0" cy="-9" r="16" fill="#b45309" stroke="#78350f" stroke-width="2"/>
+        <ellipse cx="-16" cy="-8" rx="6" ry="12" transform="rotate(15 -16 -8)" fill="#78350f"/>
+        <ellipse cx="16" cy="-8" rx="6" ry="12" transform="rotate(-15 16 -8)" fill="#78350f"/>
+        <ellipse cx="0" cy="-4" rx="8" ry="6" fill="#fde68a"/>
+        <circle cx="-6" cy="-12" r="2.6" fill="#1e293b"/>
+        <circle cx="6" cy="-12" r="2.6" fill="#1e293b"/>
+        <ellipse cx="0" cy="-6" rx="4" ry="2.8" fill="#1e293b"/>
+        <path d="M -4,-1 Q 0,3 4,-1" fill="none" stroke="#78350f" stroke-width="1.5"/>
+      </g>`;
+    }
+
+    function drawRabbit(x, y, scale = 1) {
+      return `<g transform="translate(${x},${y}) scale(${scale})">
+        <circle cx="16" cy="16" r="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+        <ellipse cx="0" cy="12" rx="17" ry="15" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+        <ellipse cx="-7" cy="-26" rx="5" ry="16" transform="rotate(-6 -7 -26)" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+        <ellipse cx="-7" cy="-26" rx="2.5" ry="11" transform="rotate(-6 -7 -26)" fill="#fda4af"/>
+        <ellipse cx="7" cy="-26" rx="5" ry="16" transform="rotate(6 7 -26)" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+        <ellipse cx="7" cy="-26" rx="2.5" ry="11" transform="rotate(6 7 -26)" fill="#fda4af"/>
+        <circle cx="0" cy="-7" r="14" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+        <circle cx="-5" cy="-9" r="2.4" fill="#e11d48"/>
+        <circle cx="5" cy="-9" r="2.4" fill="#e11d48"/>
+        <polygon points="-2.5,-4 2.5,-4 0,-1.5" fill="#f43f5e"/>
+        <ellipse cx="-8" cy="25" rx="5.5" ry="3.5" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+        <ellipse cx="8" cy="25" rx="5.5" ry="3.5" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+      </g>`;
+    }
+
+    function drawBall(x, y, r = 18) {
+      return `<g transform="translate(${x},${y})">
+        <ellipse cx="0" cy="${r + 2}" rx="${r * 0.85}" ry="4" fill="rgba(0,0,0,0.18)"/>
+        <circle cx="0" cy="0" r="${r}" fill="#ef4444" stroke="#991b1b" stroke-width="2"/>
+        <path d="M -${r*0.7} -${r*0.7} Q 0 -${r*0.2} ${r*0.7} -${r*0.7}" fill="none" stroke="#fef08a" stroke-width="3"/>
+        <path d="M -${r*0.7} ${r*0.7} Q 0 ${r*0.2} ${r*0.7} ${r*0.7}" fill="none" stroke="#ffffff" stroke-width="3"/>
+        <circle cx="-${r*0.35}" cy="-${r*0.35}" r="${r*0.22}" fill="rgba(255,255,255,0.45)"/>
+      </g>`;
+    }
+
+    function drawApple(x, y, scale = 1) {
+      return `<g transform="translate(${x},${y}) scale(${scale})">
+        <ellipse cx="0" cy="17" rx="13" ry="3.5" fill="rgba(0,0,0,0.15)"/>
+        <path d="M 0 -11 C -12 -16, -20 -2, -14 10 C -10 17, -3 17, 0 14 C 3 17, 10 17, 14 10 C 20 -2, 12 -16, 0 -11 Z" fill="#ef4444" stroke="#991b1b" stroke-width="2"/>
+        <path d="M 0 -11 Q 2 -19 6 -20" fill="none" stroke="#78350f" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M 2 -15 Q 12 -21 15 -13 Q 8 -9 2 -15 Z" fill="#22c55e" stroke="#15803d" stroke-width="1.5"/>
+        <ellipse cx="-6" cy="-3" rx="3" ry="5" transform="rotate(20 -6 -3)" fill="rgba(255,255,255,0.35)"/>
+      </g>`;
+    }
+
+    function drawBoxClosed(x, y, w = 76, h = 54) {
+      const hw = w / 2, hh = h / 2;
+      return `<g transform="translate(${x},${y})">
+        <ellipse cx="0" cy="${hh + 4}" rx="${hw + 6}" ry="6" fill="rgba(0,0,0,0.15)"/>
+        <polygon points="-${hw},-${hh} -${hw-12},-${hh+14} ${hw+12},-${hh+14} ${hw},-${hh}" fill="#f59e0b" stroke="#92400e" stroke-width="2" stroke-linejoin="round"/>
+        <line x1="-${hw-6}" y1="-${hh+7}" x2="${hw+6}" y2="-${hh+7}" stroke="#fef3c7" stroke-width="3"/>
+        <rect x="-${hw}" y="-${hh}" width="${w}" height="${h}" rx="3" fill="#d97706" stroke="#92400e" stroke-width="2"/>
+        <rect x="-6" y="-${hh}" width="12" height="18" fill="#fef3c7" opacity="0.85"/>
+      </g>`;
+    }
+
+    function drawScene(scene) {
+      const ground = `<rect x="10" y="132" width="220" height="18" rx="6" fill="#e2e8f0" opacity="0.7"/>`;
+      switch (scene) {
+        case "cat_behind_box":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}${drawCat(108, 66, 0.95)}${drawBoxClosed(120, 108, 84, 54)}<text x="120" y="114" text-anchor="middle" fill="#fffbeb" font-size="11" font-weight="bold">BOX</text></svg>`;
+        case "dog_behind_tree":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}${drawDog(142, 102, 0.9)}<rect x="102" y="68" width="32" height="72" rx="4" fill="#92400e" stroke="#451a03" stroke-width="2"/><circle cx="118" cy="48" r="34" fill="#22c55e" stroke="#15803d" stroke-width="2"/><circle cx="92" cy="60" r="24" fill="#16a34a" stroke="#15803d" stroke-width="2"/><circle cx="144" cy="60" r="24" fill="#16a34a" stroke="#15803d" stroke-width="2"/></svg>`;
+        case "rabbit_behind_bush":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}${drawRabbit(120, 82, 0.95)}<g><circle cx="86" cy="118" r="24" fill="#16a34a" stroke="#14532d" stroke-width="2"/><circle cx="154" cy="118" r="24" fill="#16a34a" stroke="#14532d" stroke-width="2"/><circle cx="120" cy="112" r="30" fill="#22c55e" stroke="#14532d" stroke-width="2"/><rect x="66" y="126" width="108" height="16" rx="6" fill="#16a34a"/><circle cx="102" cy="108" r="3" fill="#fb7185"/><circle cx="138" cy="114" r="3" fill="#fb7185"/><circle cx="120" cy="124" r="3" fill="#fb7185"/></g></svg>`;
+        case "dog_infront_house":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<g transform="translate(120, 68)"><rect x="-44" y="-12" width="88" height="64" fill="#fcd34d" stroke="#b45309" stroke-width="2"/><polygon points="-54,-12 0,-48 54,-12" fill="#ef4444" stroke="#991b1b" stroke-width="2" stroke-linejoin="round"/><path d="M -20 52 L -20 18 A 20 20 0 0 1 20 18 L 20 52 Z" fill="#451a03"/></g>${drawDog(120, 115, 0.95)}</svg>`;
+        case "ball_infront_box":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}${drawBoxClosed(120, 86, 86, 56)}<text x="120" y="90" text-anchor="middle" fill="#fffbeb" font-size="11" font-weight="bold">BOX</text>${drawBall(120, 125, 20)}</svg>`;
+        case "cat_infront_sofa":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<g transform="translate(120, 78)"><rect x="-64" y="-26" width="128" height="52" rx="10" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/><rect x="-74" y="-8" width="20" height="42" rx="6" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/><rect x="54" y="-8" width="20" height="42" rx="6" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/><rect x="-54" y="6" width="108" height="26" rx="5" fill="#60a5fa" stroke="#1d4ed8" stroke-width="2"/><line x1="0" y1="6" x2="0" y2="32" stroke="#1d4ed8" stroke-width="2"/></g>${drawCat(120, 114, 0.92)}</svg>`;
+        case "ball_between_boxes":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}${drawBoxClosed(54, 104, 62, 48)}${drawBall(120, 114, 18)}${drawBoxClosed(186, 104, 62, 48)}</svg>`;
+        case "apple_between_book_cup":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<g transform="translate(56, 116)"><rect x="-32" y="-12" width="64" height="22" rx="3" fill="#2563eb" stroke="#1e3a8a" stroke-width="2"/><rect x="-28" y="-8" width="58" height="14" fill="#f8fafc"/><line x1="-26" y1="-3" x2="28" y2="-3" stroke="#cbd5e1" stroke-width="1.5"/><line x1="-26" y1="2" x2="28" y2="2" stroke="#cbd5e1" stroke-width="1.5"/></g>${drawApple(120, 114, 1)}<g transform="translate(182, 110)"><path d="M 16 -8 C 28 -8, 28 12, 16 12" fill="none" stroke="#eab308" stroke-width="4"/><rect x="-16" y="-16" width="32" height="36" rx="4" fill="#facc15" stroke="#a16207" stroke-width="2"/><ellipse cx="0" cy="-16" rx="16" ry="4" fill="#fef08a" stroke="#a16207" stroke-width="1.5"/></g></svg>`;
+        case "dog_between_trees":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<g transform="translate(48, 0)"><rect x="-10" y="78" width="20" height="60" fill="#92400e" stroke="#451a03" stroke-width="2"/><circle cx="0" cy="56" r="28" fill="#22c55e" stroke="#15803d" stroke-width="2"/></g>${drawDog(120, 108, 0.9)}<g transform="translate(192, 0)"><rect x="-10" y="78" width="20" height="60" fill="#92400e" stroke="#451a03" stroke-width="2"/><circle cx="0" cy="56" r="28" fill="#22c55e" stroke="#15803d" stroke-width="2"/></g></svg>`;
+        case "ball_nextto_box":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}${drawBoxClosed(88, 104, 76, 52)}<text x="88" y="108" text-anchor="middle" fill="#fffbeb" font-size="11" font-weight="bold">BOX</text>${drawBall(158, 114, 18)}</svg>`;
+        case "chair_nextto_table":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<g transform="translate(88, 94)"><rect x="-46" y="-12" width="10" height="54" fill="#92400e" stroke="#451a03" stroke-width="1.5"/><rect x="36" y="-12" width="10" height="54" fill="#92400e" stroke="#451a03" stroke-width="1.5"/><rect x="-54" y="-20" width="108" height="12" rx="3" fill="#d97706" stroke="#78350f" stroke-width="2"/></g><g transform="translate(178, 98)"><rect x="10" y="-42" width="8" height="80" rx="2" fill="#b45309" stroke="#451a03" stroke-width="1.5"/><rect x="-18" y="-2" width="8" height="40" rx="2" fill="#b45309" stroke="#451a03" stroke-width="1.5"/><rect x="-22" y="-8" width="42" height="9" rx="2" fill="#f59e0b" stroke="#78350f" stroke-width="1.5"/></g></svg>`;
+        case "cat_nextto_dog":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}${drawCat(86, 106, 0.92)}${drawDog(154, 106, 0.92)}</svg>`;
+        case "cat_under_table":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<g transform="translate(120, 74)"><rect x="-68" y="-4" width="12" height="68" fill="#92400e" stroke="#451a03" stroke-width="2"/><rect x="56" y="-4" width="12" height="68" fill="#92400e" stroke="#451a03" stroke-width="2"/><rect x="-78" y="-16" width="156" height="14" rx="4" fill="#d97706" stroke="#78350f" stroke-width="2"/></g>${drawCat(120, 112, 0.88)}</svg>`;
+        case "ball_under_chair":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<g transform="translate(120, 82)"><rect x="-34" y="-54" width="10" height="108" rx="3" fill="#92400e" stroke="#451a03" stroke-width="2"/><rect x="24" y="0" width="10" height="54" rx="3" fill="#92400e" stroke="#451a03" stroke-width="2"/><rect x="-38" y="-8" width="76" height="12" rx="3" fill="#d97706" stroke="#78350f" stroke-width="2"/></g>${drawBall(120, 120, 16)}</svg>`;
+        case "rabbit_under_tree":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<rect x="70" y="64" width="24" height="74" fill="#92400e" stroke="#451a03" stroke-width="2"/><ellipse cx="118" cy="42" rx="68" ry="30" fill="#22c55e" stroke="#15803d" stroke-width="2"/><circle cx="76" cy="52" r="24" fill="#16a34a"/><circle cx="152" cy="52" r="24" fill="#16a34a"/>${drawRabbit(136, 114, 0.85)}</svg>`;
+        case "apple_on_book":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<g transform="translate(120, 122)"><rect x="-52" y="-12" width="104" height="24" rx="4" fill="#2563eb" stroke="#1e3a8a" stroke-width="2"/><rect x="-46" y="-7" width="94" height="14" fill="#f8fafc"/><line x1="-42" y1="-2" x2="44" y2="-2" stroke="#cbd5e1" stroke-width="1.5"/><line x1="-42" y1="3" x2="44" y2="3" stroke="#cbd5e1" stroke-width="1.5"/></g>${drawApple(120, 94, 1.05)}</svg>`;
+        case "cat_on_box":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}${drawBoxClosed(120, 114, 86, 48)}<text x="120" y="120" text-anchor="middle" fill="#fffbeb" font-size="11" font-weight="bold">BOX</text>${drawCat(120, 62, 0.9)}</svg>`;
+        case "book_on_table":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<g transform="translate(120, 92)"><rect x="-64" y="0" width="12" height="48" fill="#92400e" stroke="#451a03" stroke-width="2"/><rect x="52" y="0" width="12" height="48" fill="#92400e" stroke="#451a03" stroke-width="2"/><rect x="-74" y="-12" width="148" height="14" rx="4" fill="#d97706" stroke="#78350f" stroke-width="2"/></g><g transform="translate(120, 70)"><rect x="-38" y="-10" width="76" height="20" rx="3" fill="#2563eb" stroke="#1e3a8a" stroke-width="2"/><rect x="-34" y="-6" width="68" height="12" fill="#f8fafc"/><line x1="-30" y1="0" x2="32" y2="0" stroke="#cbd5e1" stroke-width="1.5"/></g></svg>`;
+        case "cat_in_box":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<polygon points="74,86 86,70 154,70 166,86" fill="#92400e" stroke="#78350f" stroke-width="2"/><polygon points="74,86 50,72 62,58 86,70" fill="#f59e0b" stroke="#92400e" stroke-width="2"/><polygon points="166,86 190,72 178,58 154,70" fill="#f59e0b" stroke="#92400e" stroke-width="2"/>${drawCat(120, 82, 0.9)}<rect x="74" y="86" width="92" height="50" rx="3" fill="#d97706" stroke="#92400e" stroke-width="2"/><text x="120" y="116" text-anchor="middle" fill="#fffbeb" font-size="11" font-weight="bold">BOX</text></svg>`;
+        case "fish_in_bowl":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<circle cx="120" cy="96" r="44" fill="#e0f2fe" stroke="#38bdf8" stroke-width="2.5"/><path d="M 78 86 Q 120 92 162 86 A 42 42 0 1 1 78 86 Z" fill="#7dd3fc" opacity="0.75"/><g transform="translate(116, 102)"><polygon points="14,0 28,-10 28,10" fill="#f97316" stroke="#c2410c" stroke-width="1.5"/><ellipse cx="0" cy="0" rx="16" ry="10" fill="#fb923c" stroke="#c2410c" stroke-width="1.5"/><circle cx="-8" cy="-2" r="2.2" fill="#0f172a"/><circle cx="-18" cy="-12" r="2.5" fill="#ffffff" opacity="0.8"/><circle cx="-14" cy="-20" r="3.5" fill="#ffffff" opacity="0.8"/></g><ellipse cx="120" cy="56" rx="26" ry="6" fill="#bae6fd" stroke="#0284c7" stroke-width="2"/><path d="M 88 74 A 34 34 0 0 0 88 116" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.8"/></svg>`;
+        case "apple_in_basket":
+          return `<svg viewBox="0 0 240 165" width="220" height="150">${ground}<path d="M 82 90 A 38 42 0 0 1 158 90" fill="none" stroke="#92400e" stroke-width="5"/><ellipse cx="120" cy="90" rx="44" ry="10" fill="#78350f"/>${drawApple(120, 86, 1.05)}<polygon points="76,90 88,136 152,136 164,90" fill="#d97706" stroke="#78350f" stroke-width="2" stroke-linejoin="round"/><line x1="82" y1="105" x2="158" y2="105" stroke="#92400e" stroke-width="2"/><line x1="85" y1="120" x2="155" y2="120" stroke="#92400e" stroke-width="2"/><rect x="72" y="86" width="96" height="8" rx="4" fill="#f59e0b" stroke="#78350f" stroke-width="2"/></svg>`;
+      }
+      return "";
+    }
+
+    function norm(v) {
+      return (v || "").trim().toLowerCase().replace(/\s+/g, " ");
+    }
+
+    function render() {
+      const usage = {};
+      PREPOSITIONS.forEach(p => usage[p.key] = 0);
+      Object.values(answers).forEach(v => {
+        const n = norm(v);
+        if (usage[n] !== undefined) usage[n]++;
+      });
+
+      document.getElementById("wordBank").innerHTML =
+        `<span style="font-size:0.85rem;font-weight:700;color:#475569;">Kelime Kutusu (Her biri 3 kez):</span>` +
+        PREPOSITIONS.map(p => `
+          <span class="word-chip">
+            <strong>${p.label}</strong>
+            ${showHints ? `<span>(${p.tr})</span>` : ""}
+            <span class="count no-print">${usage[p.key]}/3</span>
+          </span>
+        `).join("");
+
+      let correct = 0;
+      QUESTIONS_MASTER.forEach(q => {
+        if ( statuses[q.id] === "correct" && norm(answers[q.id]) === q.prep ) correct++;
+      });
+      document.getElementById("scorePill").textContent = `Skor: ${correct} / 21`;
+
+      const list = getList();
+      document.getElementById("questionsGrid").innerHTML = list.map((q, i) => {
+        const val = answers[q.id] || "";
+        const st = statuses[q.id] || "";
+        return `
+          <div class="q-card ${st}">
+            <div class="q-header">
+              <span class="q-num">Soru ${i + 1}</span>
+              <span>${st === "correct" ? "✅ Doğru!" : st === "wrong" ? `❌ Doğrusu: ${q.prep}` : ""}</span>
+            </div>
+            <div class="svg-box">${drawScene(q.scene)}</div>
+            <div class="sentence">
+              ${q.before}
+              <input class="blank-input" type="text" value="${val.replace(/"/g, '&quot;')}"
+                placeholder="..............."
+                oninput="updateInput('${q.id}', this.value)" />
+              ${q.after}
+            </div>
+            ${showHints ? `<div class="tr-hint">🇹🇷 ${q.trSentence}</div>` : ""}
+            <div class="quick-picks">
+              ${PREPOSITIONS.map(p => `
+                <button class="pick-btn ${norm(val) === p.key ? 'active' : ''}"
+                  onclick="pickPrep('${q.id}', '${p.key}')">${p.label}</button>
+              `).join("")}
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function updateInput(id, val) {
+      answers[id] = val;
+      statuses[id] = "";
+    }
+
+    function pickPrep(id, key) {
+      const q = QUESTIONS_MASTER.find(x => x.id === id);
+      answers[id] = key;
+      statuses[id] = key === q.prep ? "correct" : "wrong";
+      render();
+    }
+
+    function checkAll() {
+      QUESTIONS_MASTER.forEach(q => {
+        statuses[q.id] = norm(answers[q.id]) === q.prep ? "correct" : "wrong";
+      });
+      render();
+    }
+
+    function showAnswers() {
+      QUESTIONS_MASTER.forEach(q => {
+        answers[q.id] = q.prep;
+        statuses[q.id] = "correct";
+      });
+      render();
+    }
+
+    function resetAll() {
+      Object.keys(answers).forEach(k => delete answers[k]);
+      Object.keys(statuses).forEach(k => delete statuses[k]);
+      render();
+    }
+
+    function toggleOrder() {
+      isMixed = !isMixed;
+      document.getElementById("btnOrder").textContent = isMixed ? "🔀 Sıra: Karışık" : "📚 Sıra: Konu Sıralı";
+      render();
+    }
+
+    function toggleHints() {
+      showHints = !showHints;
+      document.getElementById("btnHints").textContent = showHints ? "🇹🇷 Türkçe İpucu: Açık" : "🇹🇷 Türkçe İpucu: Gizli";
+      render();
+    }
+
+    render();
+  </script>
+</body>
+</html>
